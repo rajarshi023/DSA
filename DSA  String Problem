@@ -1,0 +1,26 @@
+HI... 
+Here this is the repo here I cannot solve this DSA problem...
+
+
+
+A naive solution would be to consider all substrings of the second string and find the longest substring that is also a substring of the first string. The time complexity of this solution would be O((m + n) × m2), where m and n are the length of the strings X and Y, as it takes (m+n) time for substring search, and there are m2 substrings of the second string. We can optimize this method by considering substrings in order of their decreasing lengths and return as soon as any substring matches the first string. But the worst-case time complexity remains the same when no common characters are present.
+
+Can we do better?
+
+The idea is to find the longest common suffix for all pairs of prefixes of the strings using dynamic programming using the relation:
+
+LCSuffix[i][j] = | LCSuffix[i-1][j-1] + 1       (if X[i-1] = Y[j-1])
+                 | 0                            (otherwise)
+ 
+where,
+ 
+0 <= i – 1 < m,    where m is the length of string X
+0 <= j – 1 < n,    where n is the length of string Y
+For example, consider strings ABAB and BABA.
+
+Longest Common Substring
+
+Finally, the longest common substring length would be the maximal of these longest common suffixes of all possible prefixes.
+
+ 
+The following solution in C++, Java, and Python finds the length of the longest repeated subsequence of sequences X and Y iteratively using the optimal substructure property of the LCS problem.
