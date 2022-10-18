@@ -1,0 +1,30 @@
+#include<stdio.h>
+#include<math.h>
+
+#define f(x) (3*x-cos(x)-1)
+int main()
+{
+double a,b,x1,x2;
+int i=0;
+printf("Enter the lower and the upper bound respectively a,b");
+scanf("%lf %lf",&a,&b);
+printf("\nNI         a           b          f(a)         f(b)            x1            f(x1)");
+printf("\n____________________________________________________________________________________");
+x1=a;
+do
+{
+    /* code */
+    x1=x2;
+    x2=a+(fabs(b-a)*fabs(f(a)))/(fabs(f(b))+fabs(f(a)));
+    if
+      (f(a)*f(x2)<0)
+      b=x2;
+    else
+      a=x2;
+      i++;
+  printf("\n%2d   %0.8lf   %0.8lf   %0.8lf   %0.8lf   %0.8lf   %0.8lf",i,a,b,f(a),f(b),x1,f(x1));
+
+}
+ while  (fabs(x1-x2)>0.0000001);
+ printf("\nHence the real root of the equation is %0.6lf",x2);
+
